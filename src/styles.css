@@ -107,6 +107,7 @@ footer {
   color: #dbd7d2;
 }
 
-#my-name {
+#my-name,
+#my-github {
   text-decoration: underline;
 }
