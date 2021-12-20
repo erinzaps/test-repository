@@ -1,4 +1,26 @@
 // city search bar
+function formatDate(timestamp) {
+  date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
+}
 
 function changeConditions(response) {
   document.querySelector(".city").innerHTML =
@@ -12,6 +34,8 @@ function changeConditions(response) {
   ).innerHTML = response.data.main.humidity + "%";
   document.querySelector("#wind").innerHTML =
     Math.round(response.data.wind.speed) + " m/s";
+  document.querySelector("#date-time").innerHTML =
+    formatDate(response.data.dt * 1000);
 }
 
 function search(city) {
