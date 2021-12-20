@@ -9,7 +9,7 @@ function formatDate(timestamp) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  days = [
+  let days = [
     "Sunday",
     "Monday",
     "Tuesday",
@@ -19,7 +19,23 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-  return `${day} ${hours}:${minutes}`;
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let month = months[date.getMonth()];
+  let date = getDate();
+  return `${day}, ${month} ${date} ${hours}:${minutes}`;
 }
 
 function changeConditions(response) {
