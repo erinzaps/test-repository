@@ -110,6 +110,7 @@ footer {
 }
 
 #my-name,
-#my-github {
+#my-github,
+#my-netlify {
   text-decoration: underline;
 }
