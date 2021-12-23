@@ -37,34 +37,58 @@ function formatDate(timestamp) {
   return `${day}, ${month} ${today} ${hours}:${minutes}`;
 }
 
+function formatWeekday(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+  ];
+  return days[day];
+}
+
 function displayFutureConditions(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector(
     "#future-conditions"
   );
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Thurs", "Fri", "Sat", "Sun", "Mon"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `     <div class="col weekday">
-              <div class="forecast-day">${day}</div>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col weekday">
+              <div class="forecast-day">${formatWeekday(
+                forecastDay.dt
+              )}</div>
               <img
-                src="images/partly-cloudy v2.png"
+                src="http://openweathermap.org/img/wn/${
+                  forecastDay.weather[0].icon
+                }@2x.png"
                 alt="part-cloud"
                 class="img-part-sun future"
               />
               <div class="temp-range">
                 <span class="forecast-temp-high"
-                  >24°</span
+                  >${Math.round(
+                    forecastDay.temp.max
+                  )}°</span
                 >
                 <span class="forecast-temp-low"
-                  >12°</span
+                  >${Math.round(
+                    forecastDay.temp.min
+                  )}°</span
                 >
               </div>
             </div>
           `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
