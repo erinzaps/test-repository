@@ -56,8 +56,8 @@ function displayFutureConditions(response) {
                 src="http://openweathermap.org/img/wn/${
                   forecastDay.weather[0].icon
                 }@2x.png"
-                alt="part-cloud"
-                class="img-part-sun future"
+                alt="future conditions"
+                class="icon-future"
               />
               <div class="temp-range">
                 <span class="forecast-temp-high"
