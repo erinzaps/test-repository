@@ -7,6 +7,22 @@ body {
   width: fit-content;
 }
 
+a {
+  color: #dbd7d2;
+  text-decoration: none;
+}
+
+a:hover,
+hr {
+  color: #dddddd;
+}
+
+footer {
+  font-size: 8px;
+  text-align: center;
+  color: #dbd7d2;
+}
+
 .container {
   background-color: #f7f7f7;
   border: 10px solid #f7f7f7;
@@ -26,17 +42,6 @@ body {
   width: 100%;
   border-radius: 5px;
   outline: none;
-}
-
-::-webkit-search-cancel-button {
-  background-color: #222831;
-  margin-right: 15px;
-}
-
-::placeholder {
-  color: #dbd7d2;
-  font-weight: 200;
-  font-style: italic;
 }
 
 .btn {
@@ -63,9 +68,19 @@ body {
 .present-temp,
 .sky,
 .humidity,
-.wind {
+.wind,
+.degrees-symbol {
   color: #f05454;
   font-weight: 500;
+}
+
+.active {
+  color: #222831;
+  cursor: default;
+}
+
+.active:hover {
+  color: #222831;
 }
 
 .future-conditions {
@@ -93,24 +108,19 @@ body {
   margin: 12px auto;
 }
 
-a {
-  color: #dbd7d2;
-  text-decoration: none;
-}
-
-a:hover,
-hr {
-  color: #dddddd;
-}
-
-footer {
-  font-size: 8px;
-  text-align: center;
-  color: #dbd7d2;
-}
-
 #my-name,
 #my-github,
 #my-netlify {
   text-decoration: underline;
+}
+
+::-webkit-search-cancel-button {
+  background-color: #222831;
+  margin-right: 15px;
+}
+
+::placeholder {
+  color: #dbd7d2;
+  font-weight: 200;
+  font-style: italic;
 }

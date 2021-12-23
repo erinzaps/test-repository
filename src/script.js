@@ -39,10 +39,11 @@ function formatDate(timestamp) {
 }
 
 function changeConditions(response) {
+  celsiusTemperature = response.data.main.temp;
   document.querySelector(".city").innerHTML =
     response.data.name;
   document.querySelector("#present-temp").innerHTML =
-    Math.round(response.data.main.temp) + "°C";
+    Math.round(celsiusTemperature);
   document.querySelector("#present-sky").innerHTML =
     response.data.weather[0].description;
   document.querySelector(
@@ -74,8 +75,6 @@ function cityChange(event) {
 
 let form = document.querySelector("form");
 form.addEventListener("submit", cityChange);
-
-search("Seattle");
 
 //current location button
 function searchLocation(position) {
@@ -145,24 +144,50 @@ let currentDateTime =
 
 currentDateTime.innerHTML = `${day}, ${month} ${date}, ${hour}:${minute}`;
 
-// // fahrenheit-celsius toggle
-// function tempF() {
-//   let currentGenTemp = document.querySelector()
-//   let tempFahr = document.querySelector(
-//     "#present-temp"
-//   );
-//   tempFahr.innerHTML = "57°";
-// }
+// fahrenheit-celsius toggle
 
-// let fahrenheit = document.querySelector("#fahrenheit");
-// fahrenheit.addEventListener("click", tempF);
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector(
+    "#present-temp"
+  );
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemperature =
+    (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(
+    fahrenheitTemperature
+  );
+}
 
-// function tempC() {
-//   let tempCels = document.querySelector(
-//     ".present-temp"
-//   );
-//   tempCels.innerHTML = "";
-// }
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector(
+    "#present-temp"
+  );
+  temperatureElement.innerHTML = Math.round(
+    celsiusTemperature
+  );
+}
 
-// let celsius = document.querySelector("#celsius");
-// celsius.addEventListener("click", tempC);
+let fahrenheitLink = document.querySelector(
+  "#fahrenheit-link"
+);
+fahrenheitLink.addEventListener(
+  "click",
+  displayFahrenheitTemperature
+);
+
+let celsiusLink = document.querySelector(
+  "#celsius-link"
+);
+celsiusLink.addEventListener(
+  "click",
+  displayCelsiusTemperature
+);
+
+let celsiusTemperature = null;
+
+search("Seattle");
