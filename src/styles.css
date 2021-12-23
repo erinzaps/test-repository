@@ -76,6 +76,10 @@ footer {
   font-weight: 500;
 }
 
+.current-conditions {
+  line-height: 18px;
+}
+
 .future-conditions {
   display: block;
   margin-top: 36px;
@@ -88,7 +92,7 @@ footer {
 }
 
 .date-time {
-  font-size: 12px;
+  font-size: 10px;
   font-style: italic;
 }
 
