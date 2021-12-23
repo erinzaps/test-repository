@@ -1,4 +1,3 @@
-// city search bar
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -73,10 +72,6 @@ function cityChange(event) {
   search(city);
 }
 
-let form = document.querySelector("form");
-form.addEventListener("submit", cityChange);
-
-//current location button
 function searchLocation(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=56dde9198f6220f02270c3298c636077&units=metric`;
   axios.get(apiUrl).then(changeConditions);
@@ -88,63 +83,6 @@ function getCurrentPosition(event) {
     searchLocation
   );
 }
-
-let locationButton = document.querySelector(
-  "#my-location"
-);
-locationButton.addEventListener(
-  "click",
-  getCurrentPosition
-);
-
-// current date/time/conditions
-
-let now = new Date();
-
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-let month = months[now.getMonth()];
-
-let date = now.getDate();
-
-let hour = now.getHours();
-if (hour < 10) {
-  hours = `0${hour}`;
-}
-let minute = now.getMinutes();
-if (minute < 10) {
-  minute = `0${minute}`;
-}
-
-let currentDateTime =
-  document.querySelector(".date-time");
-
-currentDateTime.innerHTML = `${day}, ${month} ${date}, ${hour}:${minute}`;
-
-// fahrenheit-celsius toggle
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
@@ -171,6 +109,17 @@ function displayCelsiusTemperature(event) {
     celsiusTemperature
   );
 }
+
+let form = document.querySelector("form");
+form.addEventListener("submit", cityChange);
+
+let locationButton = document.querySelector(
+  "#my-location"
+);
+locationButton.addEventListener(
+  "click",
+  getCurrentPosition
+);
 
 let fahrenheitLink = document.querySelector(
   "#fahrenheit-link"
