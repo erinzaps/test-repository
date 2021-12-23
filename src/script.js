@@ -37,7 +37,8 @@ function formatDate(timestamp) {
   return `${day}, ${month} ${today} ${hours}:${minutes}`;
 }
 
-function displayFutureConditions() {
+function displayFutureConditions(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector(
     "#future-conditions"
   );
@@ -69,6 +70,11 @@ function displayFutureConditions() {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=56dde9198f6220f02270c3298c636077&units=metric`;
+  axios.get(apiUrl).then(displayFutureConditions);
+}
+
 function changeConditions(response) {
   celsiusTemperature = response.data.main.temp;
   document.querySelector(".city").innerHTML =
@@ -89,6 +95,7 @@ function changeConditions(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -172,4 +179,3 @@ celsiusLink.addEventListener(
 let celsiusTemperature = null;
 
 search("Seattle");
-displayFutureConditions();
