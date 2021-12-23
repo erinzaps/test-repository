@@ -37,6 +37,38 @@ function formatDate(timestamp) {
   return `${day}, ${month} ${today} ${hours}:${minutes}`;
 }
 
+function displayFutureConditions() {
+  let forecastElement = document.querySelector(
+    "#future-conditions"
+  );
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thurs", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `     <div class="col weekday">
+              <div class="forecast-day">${day}</div>
+              <img
+                src="images/partly-cloudy v2.png"
+                alt="part-cloud"
+                class="img-part-sun future"
+              />
+              <div class="temp-range">
+                <span class="forecast-temp-high"
+                  >24°</span
+                >
+                <span class="forecast-temp-low"
+                  >12°</span
+                >
+              </div>
+            </div>
+          `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function changeConditions(response) {
   celsiusTemperature = response.data.main.temp;
   document.querySelector(".city").innerHTML =
@@ -140,3 +172,4 @@ celsiusLink.addEventListener(
 let celsiusTemperature = null;
 
 search("Seattle");
+displayFutureConditions();
