@@ -43,7 +43,7 @@ function displayFutureConditions() {
   );
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Thurs", "Fri", "Sat", "Sun"];
+  let days = ["Thurs", "Fri", "Sat", "Sun", "Mon"];
   days.forEach(function (day) {
     forecastHTML =
       forecastHTML +
