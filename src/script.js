@@ -18,23 +18,8 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-  let months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  let month = months[date.getMonth()];
-  let today = date.getDate();
-  return `${day}, ${month} ${today} ${hours}:${minutes}`;
+
+  return `Last updated ${day} ${hours}:${minutes}`;
 }
 
 function formatWeekday(timestamp) {
