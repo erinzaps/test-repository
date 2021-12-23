@@ -1,6 +1,6 @@
 // city search bar
 function formatDate(timestamp) {
-  date = new Date(timestamp);
+  let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -34,8 +34,8 @@ function formatDate(timestamp) {
     "December",
   ];
   let month = months[date.getMonth()];
-  let date = getDate();
-  return `${day}, ${month} ${date} ${hours}:${minutes}`;
+  let today = date.getDate();
+  return `${day}, ${month} ${today} ${hours}:${minutes}`;
 }
 
 function changeConditions(response) {
@@ -52,6 +52,11 @@ function changeConditions(response) {
     Math.round(response.data.wind.speed) + " m/s";
   document.querySelector("#date-time").innerHTML =
     formatDate(response.data.dt * 1000);
+  let iconElement = document.querySelector("icon");
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 function search(city) {
