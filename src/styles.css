@@ -28,7 +28,7 @@ footer {
   border: 10px solid #f7f7f7;
   border-radius: 5px;
   padding: 20px 40px;
-  max-width: 600px;
+  max-width: 100%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -87,7 +87,6 @@ footer {
   display: block;
   margin-top: 36px;
   margin-bottom: 16px;
-  max-width: 600px;
 }
 
 .icon {
@@ -97,8 +96,16 @@ footer {
 
 .weekday {
   text-align: center;
+}
+
+.forecast-day {
+  text-align: center;
   font-weight: 500;
   padding: 0px 22px;
+}
+
+.forecast-temp-low {
+  opacity: 0.5;
 }
 
 .img-sun.future,
